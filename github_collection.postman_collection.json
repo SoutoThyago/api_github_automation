@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "f732b304-e071-487a-adc2-9832a0906092",
+		"name": "github_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14123011"
+	},
+	"item": [
+		{
+			"name": "GET GitHub_User Great",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Status Code\r",
+							"pm.test(\"Validar que o status code é igual a 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ambiente}}/search?q=SoutoThyago&type=users",
+					"host": [
+						"{{ambiente}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "SoutoThyago"
+						},
+						{
+							"key": "type",
+							"value": "users"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
