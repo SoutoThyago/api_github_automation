@@ -1,4 +1,0 @@
-//Status Code
-pm.test("Validar que o status code é igual a 200", () => {
-    pm.response.to.have.status(200);
-});

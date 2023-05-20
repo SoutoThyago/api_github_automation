@@ -3,7 +3,8 @@
 		"_postman_id": "f732b304-e071-487a-adc2-9832a0906092",
 		"name": "github_collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "14123011"
+		"_exporter_id": "14123011",
+		"_collection_link": "https://interstellar-capsule-857753.postman.co/workspace/Thyago~03c0ce75-15ff-4ff9-add8-fa041563fa7a/collection/14123011-f732b304-e071-487a-adc2-9832a0906092?action=share&creator=14123011&source=collection_link"
 	},
 	"item": [
 		{
@@ -13,10 +14,27 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"//add var value\r",
+							"var result;\r",
+							"pm.test(\" Dado que eu realize o request Get\", () => {\r",
+							"    result = pm.response.text();\r",
+							"});\r",
+							"\r",
 							"//Status Code\r",
-							"pm.test(\"Validar que o status code é igual a 200\", () => {\r",
+							"pm.test(\"Então o status code é igual a 200\", () => {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							"//Response Time\r",
+							"pm.test(\"E o response time é inferior a 1255\", () => {\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(1255);\r",
+							"});\r",
+							"\r",
+							"//Tag Title\r",
+							"pm.test(\"E a tag title esteja preenchida\", () => {\r",
+							"    pm.expect(result).to.be.contains(\"<title>Search · SoutoThyago · GitHub</title>\")\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
