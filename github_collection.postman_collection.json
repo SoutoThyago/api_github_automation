@@ -4,7 +4,7 @@
 		"name": "github_collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "14123011",
-		"_collection_link": "https://interstellar-capsule-857753.postman.co/workspace/Thyago~03c0ce75-15ff-4ff9-add8-fa041563fa7a/collection/14123011-f732b304-e071-487a-adc2-9832a0906092?action=share&creator=14123011&source=collection_link"
+		"_collection_link": "https://interstellar-capsule-857753.postman.co/workspace/Thyago~03c0ce75-15ff-4ff9-add8-fa041563fa7a/collection/14123011-f732b304-e071-487a-adc2-9832a0906092?action=share&source=collection_link&creator=14123011"
 	},
 	"item": [
 		{
@@ -16,8 +16,8 @@
 						"exec": [
 							"//add var value\r",
 							"var result;\r",
-							"pm.test(\" Dado que eu realize o request Get\", () => {\r",
-							"    result = pm.response.text();\r",
+							"pm.test(\"Dado que eu realize o request Get\", () => {\r",
+							"    ((result_json)) = pm.response.json();\r",
 							"});\r",
 							"\r",
 							"//Status Code\r",
@@ -30,13 +30,34 @@
 							"    pm.expect(pm.response.responseTime).to.be.lessThan(1255);\r",
 							"});\r",
 							"\r",
+							"//Response size\r",
+							"pm.test(\"E o response size é menor que 1100 B\", () => {\r",
+							"    pm.expect(pm.response.responseSize).to.be.lessThan(1100);\r",
+							"});\r",
+							"\r",
 							"//Tag Title\r",
 							"pm.test(\"E a tag title esteja preenchida\", () => {\r",
-							"    pm.expect(result).to.be.contains(\"<title>Search · SoutoThyago · GitHub</title>\")\r",
+							"    pm.expect(result_json.title).to.be.contains(\"User search results\")\r",
 							"});\r",
+							"\r",
+							"//Tag id\r",
+							"pm.test(\"E a tag id esteja preenchida\", () => {\r",
+							"    \r",
+							"    pm.expect(result_json.payload.results[0].id).to.not.equals(null);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],

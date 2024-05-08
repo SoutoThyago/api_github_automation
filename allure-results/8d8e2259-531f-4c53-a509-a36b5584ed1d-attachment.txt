@@ -1,0 +1,31 @@
+//add var value
+var result;
+pm.test("Dado que eu realize o request Get", () => {
+    ((result_json)) = pm.response.json();
+});
+
+//Status Code
+pm.test("Então o status code é igual a 200", () => {
+    pm.response.to.have.status(200);
+});
+
+//Response Time
+pm.test("E o response time é inferior a 1255", () => {
+    pm.expect(pm.response.responseTime).to.be.lessThan(1255);
+});
+
+//Response size
+pm.test("E o response size é menor que 1100 B", () => {
+    pm.expect(pm.response.responseSize).to.be.lessThan(1100);
+});
+
+//Tag Title
+pm.test("E a tag title esteja preenchida", () => {
+    pm.expect(result_json.title).to.be.contains("User search results")
+});
+
+//Tag id
+pm.test("E a tag id esteja preenchida", () => {
+    
+    pm.expect(result_json.payload.results[0].id).to.not.equals(null);
+});
